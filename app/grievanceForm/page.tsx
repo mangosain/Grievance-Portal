@@ -2,8 +2,8 @@ import grivanceImage from "@/public/assets/grievanceImage.jpeg";
 
 const GrievanceForm = () => {
   return (
-    <div className="min-h-screen max-w-full bg-base-200 p-2 md:p-5">
-      <div className="mt-20 lg:mt-10 h-fit bg-base-100 shadow-md rounded-3xl border p-5 lg:flex gap-10">
+    <div className="min-h-screen w-full bg-base-200 p-2 md:p-5 content-center">
+      <div className="h-fit bg-base-100 shadow-md rounded-3xl border p-5 lg:flex gap-10 -translate-y-10">
         <div className="lg:w-1/2 self-center space-y-5">
           <form className="flex flex-col space-y-3">
             <div className="flex gap-2">
@@ -46,7 +46,9 @@ const GrievanceForm = () => {
                   className="h-full p-2 border-2 border-gray-300 rounded-md"
                   required
                 >
-                  <option disabled>-- Select Course --</option>
+                  <option disabled selected>
+                    -- Select Course --
+                  </option>
                   <option value="btech">MCA 2nd year</option>
                   <option value="mtech">M. Tech AI/DS</option>
                   <option value="phd">MCA 1st year</option>

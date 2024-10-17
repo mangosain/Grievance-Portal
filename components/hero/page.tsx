@@ -51,8 +51,8 @@ const LowerHero = () => {
     <div className="h-2/5 px-3 lg:flex gap-4 text-white">
       <HeroTile
         HeroTileChildren={{
-          title: "Contact Us",
-          description: "Get in touch with us",
+          title: "Track Status",
+          description: "Track your application status",
           delay: 0,
           image: {
             src: "https://img.freepik.com/premium-vector/vector-illustration-application-form-employment-people-select-resume-job_545399-828.jpg",
