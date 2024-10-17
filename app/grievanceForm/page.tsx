@@ -3,10 +3,10 @@ import grivanceImage from "@/public/assets/grievanceImage.jpeg";
 const GrievanceForm = () => {
   return (
     <div className="min-h-screen w-full bg-base-200 p-2 md:p-5 content-center">
-      <div className="h-fit bg-base-100 shadow-md rounded-3xl border p-5 lg:flex gap-10 -translate-y-10">
+      <div className="mt-32 md:mt-0 h-fit bg-base-100 shadow-md rounded-3xl border p-5 lg:flex gap-10 -translate-y-10">
         <div className="lg:w-1/2 self-center space-y-5">
           <form className="flex flex-col space-y-3">
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-2">
               <InputFieldType1
                 InputFieldType1Props={{
                   label: "First Name *",
@@ -26,7 +26,7 @@ const GrievanceForm = () => {
                 }}
               />
             </div>
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-2">
               <InputFieldType1
                 InputFieldType1Props={{
                   label: "Enroll No / Emp ID *",
@@ -36,7 +36,7 @@ const GrievanceForm = () => {
                   required: true,
                 }}
               />
-              <div className="flex flex-col gap-0.5 w-1/2">
+              <div className="flex flex-col gap-0.5 flex-1">
                 <label className="text-lg font-semibold" htmlFor="name">
                   Course
                 </label>
@@ -124,7 +124,7 @@ const InputFieldType1 = ({
   InputFieldType1Props: InputFieldType1PropsType;
 }) => {
   return (
-    <div className="flex flex-col gap-0.5 w-1/2">
+    <div className="flex flex-col gap-0.5 flex-1">
       <label
         className="text-lg font-semibold w-fit"
         htmlFor={InputFieldType1Props.HTMLfor}
