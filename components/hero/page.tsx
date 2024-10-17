@@ -53,6 +53,7 @@ const LowerHero = () => {
         HeroTileChildren={{
           title: "Contact Us",
           description: "Get in touch with us",
+          delay: 0,
           image: {
             src: "https://img.freepik.com/premium-vector/vector-illustration-application-form-employment-people-select-resume-job_545399-828.jpg",
           },
@@ -62,6 +63,7 @@ const LowerHero = () => {
         HeroTileChildren={{
           title: "FAQs",
           description: "Frequently Asked Questions",
+          delay: 0.1,
           image: {
             src: "https://img.freepik.com/free-vector/faqs-concept-illustration_114360-6685.jpg",
           },
@@ -71,6 +73,7 @@ const LowerHero = () => {
         HeroTileChildren={{
           title: "About Us",
           description: "Know more about CDAC",
+          delay: 0.2,
           image: {
             src: "https://img.freepik.com/free-vector/hand-drawn-illustration-people-with-smartphone-marketing_52683-66659.jpg",
           },
@@ -85,7 +88,7 @@ const Carousel = () => {
     <motion.div
       initial={{ x: 150, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 1, delay: 0.2 }}
+      transition={{ duration: 1.25, delay: 0.1 }}
       className="carousel carousel-center rounded-box max-w-full space-x-4 p-4"
     >
       <div className="carousel-item w-4/5">
@@ -119,6 +122,7 @@ const Carousel = () => {
 interface HeroTileProps {
   title: string;
   description: string;
+  delay: number;
   image: {
     src: string;
   };
@@ -133,7 +137,7 @@ const HeroTile = ({
     <motion.div
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1, delay: 0.4 }}
+      transition={{ duration: 1, delay: HeroTileChildren.delay }}
       className="h-full flex-1 p-4 rounded-xl shadow-lg relative mt-2 lg:mt-0 group"
       style={{
         backgroundImage:
