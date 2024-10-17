@@ -138,7 +138,7 @@ const HeroTile = ({
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 1, delay: HeroTileChildren.delay }}
-      className="h-full flex-1 p-4 rounded-xl shadow-lg relative mt-2 lg:mt-0 group"
+      className="h-full flex-1 p-4 rounded-xl shadow-lg relative mt-2 lg:mt-0 content-center group"
       style={{
         backgroundImage:
           "linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('" +
@@ -148,7 +148,7 @@ const HeroTile = ({
         backgroundSize: "cover",
       }}
     >
-      <h1 className="text-5xl font-bold mt-24">{HeroTileChildren.title}</h1>
+      <h1 className="text-5xl font-bold">{HeroTileChildren.title}</h1>
       <p className="text-lg font-semibold">{HeroTileChildren.description}</p>
       <span className="h-24 w-24 bg-black absolute right-0 bottom-0 rounded-tl-xl rounded-br-xl text-6xl flex justify-center items-center">
         <BsArrowRight className="group-hover:-rotate-45 ease-in-out duration-200" />

@@ -64,10 +64,10 @@ const GrievanceForm = () => {
               id="email"
               className="border-2 border-gray-300 rounded-md p-2"
             />
-            <div className="flex gap-10">
+            <div className="flex justify-between sm:justify-normal sm:gap-10">
               {/* make two mutually exclusive radio buttons, 1 for student, 1 for teacher */}
               <label className="text-lg font-semibold w-fit" htmlFor="role">
-                Submit as a: *
+                Submit as: *
               </label>
               <div className="flex gap-10 text-md font-medium">
                 <div className="flex items-center gap-3">
@@ -93,11 +93,19 @@ const GrievanceForm = () => {
               </div>
             </div>
             <label className="text-lg font-semibold w-fit" htmlFor="grievance">
-              Grievance
+              Detailed Dscription
             </label>
             <textarea
               id="grievance"
-              className="border-2 border-gray-300 rounded-md p-2 h-48"
+              className="border-2 border-gray-300 rounded-md p-2 h-44"
+            />
+            <label className="text-lg font-semibold w-fit" htmlFor="attachment">
+              Attachment
+            </label>
+            <input
+              type="file"
+              id="attachment"
+              className="border-2 border-gray-300 rounded-md p-2"
             />
             <button className="btn btn-primary">Submit</button>
           </form>

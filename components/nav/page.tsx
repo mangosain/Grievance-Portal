@@ -94,7 +94,7 @@ const Nav = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow-xl"
           >
             <li className="border-b py-1">
-              <a>Student Login</a>
+              <a className="btn">Student Login</a>
             </li>
             <li className="py-1">
               <a>Admin Login</a>
