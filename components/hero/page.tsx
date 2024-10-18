@@ -5,11 +5,17 @@ import { BsArrowRight } from "react-icons/bs";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import ModalTest from "../modalTest/page";
+
+import aboutImage from "@/public/assets/about-us.svg";
+import faqImage from "@/public/assets/q-and-a-about-loan.svg";
+import trackImage from "@/public/assets/girl-work-on-laptop (1).png";
 
 const Hero = () => {
   return (
     <div className="lg:h-full w-full lg:flex lg:flex-col">
       <UpperHero />
+      <ModalTest />
       <LowerHero />
     </div>
   );
@@ -55,8 +61,9 @@ const LowerHero = () => {
           description: "Track your application status",
           delay: 0,
           image: {
-            src: "https://img.freepik.com/premium-vector/vector-illustration-application-form-employment-people-select-resume-job_545399-828.jpg",
+            src: trackImage.src,
           },
+          to: "/status",
         }}
       />
       <HeroTile
@@ -65,8 +72,9 @@ const LowerHero = () => {
           description: "Frequently Asked Questions",
           delay: 0.1,
           image: {
-            src: "https://img.freepik.com/free-vector/faqs-concept-illustration_114360-6685.jpg",
+            src: faqImage.src,
           },
+          to: "/faq",
         }}
       />
       <HeroTile
@@ -75,8 +83,9 @@ const LowerHero = () => {
           description: "Know more about CDAC",
           delay: 0.2,
           image: {
-            src: "https://img.freepik.com/free-vector/hand-drawn-illustration-people-with-smartphone-marketing_52683-66659.jpg",
+            src: aboutImage.src,
           },
+          to: "/about",
         }}
       />
     </div>
@@ -123,6 +132,7 @@ interface HeroTileProps {
   title: string;
   description: string;
   delay: number;
+  to: string;
   image: {
     src: string;
   };
@@ -154,9 +164,12 @@ const HeroTile = ({
       <p className="text-md md:text-lg font-semibold mb-10 md:m-0">
         {HeroTileChildren.description}
       </p>
-      <span className="h-20 w-20 md:h-24 md:w-24 bg-black absolute right-0 bottom-0 rounded-tl-xl rounded-br-xl text-5xl md:text-6xl flex justify-center items-center">
+      <Link
+        href={HeroTileChildren.to}
+        className="h-20 w-20 md:h-24 md:w-24 bg-success-content absolute right-0 bottom-0 rounded-tl-xl rounded-br-xl text-5xl md:text-6xl flex justify-center items-center"
+      >
         <BsArrowRight className="group-hover:-rotate-45 ease-in-out duration-200" />
-      </span>
+      </Link>
     </motion.div>
   );
 };

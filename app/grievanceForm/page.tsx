@@ -1,41 +1,129 @@
+"use client";
+
+import { useState } from "react";
+
+import { db } from "@/firebase.config";
+import { collection, addDoc, setDoc, doc } from "firebase/firestore";
+
 import grivanceImage from "@/public/assets/grievanceImage.jpeg";
+import { stat } from "fs";
+import Link from "next/link";
+
+const grivanceFormData = {
+  firstName: "",
+  lastName: "",
+  enroll: "",
+  course: "",
+  email: "",
+  role: "",
+  subject: "",
+  grievance: "",
+  // attachment: "",
+};
 
 const GrievanceForm = () => {
+  const [grievanceFormData, setGrievanceFormData] = useState(grivanceFormData);
+
+  const handleGrievanceFormChange = (
+    event: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = event.target;
+    setGrievanceFormData({ ...grievanceFormData, [name]: value });
+  };
+
+  const handleGrievanceFormSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    try {
+      const docRef = await addDoc(collection(db, "grievances"), {
+        ...grievanceFormData,
+        createdOn: new Date(),
+        status: "New",
+        lastUpdated: new Date(),
+        resolution: "",
+      });
+
+      alert(
+        "Grievance Submitted successfully! Your ticket number is: " + docRef.id
+      );
+    } catch (error) {
+      alert("Error adding document: " + error);
+    }
+  };
+
   return (
     <div className="min-h-screen w-full bg-base-200 p-2 md:p-5 content-center">
-      <div className="mt-32 md:mt-0 h-fit bg-base-100 shadow-md rounded-3xl border p-5 lg:flex gap-10 -translate-y-10">
+      <div className="mt-32 lg:mt-0 h-fit bg-base-100 shadow-md rounded-3xl border p-5 lg:flex gap-10 -translate-y-10">
         <div className="lg:w-1/2 self-center space-y-5">
-          <form className="flex flex-col space-y-3">
+          <h1 className="text-3xl font-semibold text-center mt-10 lg:hidden">
+            Submit your Concern!
+          </h1>
+          <form
+            className="flex flex-col space-y-3"
+            method=""
+            onSubmit={handleGrievanceFormSubmit}
+          >
             <div className="flex flex-col sm:flex-row gap-2">
-              <InputFieldType1
-                InputFieldType1Props={{
-                  label: "First Name *",
-                  id: "first-name",
-                  HTMLfor: "first-name",
-                  type: "text",
-                  required: true,
-                }}
-              />
-              <InputFieldType1
-                InputFieldType1Props={{
-                  label: "Last Name *",
-                  id: "last-name",
-                  HTMLfor: "last-name",
-                  type: "text",
-                  required: true,
-                }}
-              />
+              {/* First Name */}
+              <div className="flex flex-col gap-0.5 flex-1">
+                <label
+                  className="text-lg font-semibold w-fit"
+                  htmlFor="firstName"
+                >
+                  First Name *
+                </label>
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  className="border-2 border-gray-300 rounded-md p-2"
+                  id="firstName"
+                  name="firstName"
+                  value={grievanceFormData.firstName}
+                  onChange={handleGrievanceFormChange}
+                />
+              </div>
+
+              {/* Last Name */}
+              <div className="flex flex-col gap-0.5 flex-1">
+                <label
+                  className="text-lg font-semibold w-fit"
+                  htmlFor="lastName"
+                >
+                  Last Name *
+                </label>
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  id="lastName"
+                  className="border-2 border-gray-300 rounded-md p-2"
+                  name="lastName"
+                  value={grievanceFormData.lastName}
+                  required
+                  onChange={handleGrievanceFormChange}
+                />
+              </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-2">
-              <InputFieldType1
-                InputFieldType1Props={{
-                  label: "Enroll No / Emp ID *",
-                  id: "enroll",
-                  HTMLfor: "enroll",
-                  type: "number",
-                  required: true,
-                }}
-              />
+              <div className="flex flex-col gap-0.5 flex-1">
+                {/* Enrollment Number */}
+                <label className="text-lg font-semibold w-fit" htmlFor="enroll">
+                  Enroll No. / Emp. ID *
+                </label>
+                <input
+                  type="number"
+                  placeholder="Enroll No. / Emp. ID"
+                  id="enroll"
+                  className="border-2 border-gray-300 rounded-md p-2"
+                  name="enroll"
+                  value={grievanceFormData.enroll}
+                  required
+                  onChange={handleGrievanceFormChange}
+                />
+              </div>
+
+              {/* Dropdown for course */}
               <div className="flex flex-col gap-0.5 flex-1">
                 <label className="text-lg font-semibold" htmlFor="name">
                   Course
@@ -44,28 +132,38 @@ const GrievanceForm = () => {
                 <select
                   id="course"
                   className="h-full p-2 border-2 border-gray-300 rounded-md"
+                  name="course"
+                  value={grievanceFormData.course}
                   required
+                  onChange={handleGrievanceFormChange}
                 >
-                  <option disabled selected>
+                  <option value="" disabled>
                     -- Select Course --
                   </option>
-                  <option value="btech">MCA 2nd year</option>
-                  <option value="mtech">M. Tech AI/DS</option>
-                  <option value="phd">MCA 1st year</option>
-                  <option value="phd">MBA</option>
+                  <option value="MCA 2nd Year">MCA 2nd year</option>
+                  <option value="M. Tech AI/DS">M. Tech AI/DS</option>
+                  <option value="MCA 1st year">MCA 1st year</option>
+                  <option value="MBA">MBA</option>
                 </select>
               </div>
             </div>
+
+            {/* Email */}
             <label className="text-lg font-semibold w-fit" htmlFor="email">
-              Email
+              Personal Email
             </label>
             <input
               type="email"
+              placeholder="Email"
               id="email"
               className="border-2 border-gray-300 rounded-md p-2"
+              name="email"
+              value={grievanceFormData.email}
+              onChange={handleGrievanceFormChange}
             />
+
+            {/* Radio buttons for role */}
             <div className="flex justify-between sm:justify-normal sm:gap-10">
-              {/* make two mutually exclusive radio buttons, 1 for student, 1 for teacher */}
               <label className="text-lg font-semibold w-fit" htmlFor="role">
                 Submit as: *
               </label>
@@ -75,7 +173,9 @@ const GrievanceForm = () => {
                     type="radio"
                     id="student"
                     name="role"
-                    value="student"
+                    value="Student"
+                    checked={grievanceFormData.role === "Student"} // Binding to state
+                    onChange={handleGrievanceFormChange} // Capturing the value
                     required
                   />
                   <label htmlFor="student">Student</label>
@@ -85,29 +185,61 @@ const GrievanceForm = () => {
                     type="radio"
                     id="teacher"
                     name="role"
-                    value="teacher"
+                    value="Teacher"
+                    checked={grievanceFormData.role === "Teacher"} // Binding to state
+                    onChange={handleGrievanceFormChange} // Capturing the value
                     required
                   />
                   <label htmlFor="teacher">Teacher</label>
                 </div>
               </div>
             </div>
+
+            {/* Subject */}
+            <label className="text-lg font-semibold w-fit" htmlFor="subject">
+              Subject *
+            </label>
+            <input
+              type="subject"
+              placeholder="Subject"
+              id="subject"
+              className="border-2 border-gray-300 rounded-md p-2"
+              name="subject"
+              value={grievanceFormData.subject}
+              onChange={handleGrievanceFormChange}
+              required
+            />
+
+            {/* Description */}
             <label className="text-lg font-semibold w-fit" htmlFor="grievance">
               Detailed Dscription
             </label>
             <textarea
               id="grievance"
+              placeholder="Write about your grievance here"
               className="border-2 border-gray-300 rounded-md p-2 h-44"
+              name="grievance"
+              value={grievanceFormData.grievance}
+              onChange={handleGrievanceFormChange}
             />
-            <label className="text-lg font-semibold w-fit" htmlFor="attachment">
+
+            {/* Attachment */}
+            {/* <label className="text-lg font-semibold w-fit" htmlFor="attachment">
               Attachment
             </label>
             <input
               type="file"
               id="attachment"
               className="border-2 border-gray-300 rounded-md p-2"
-            />
+              name="attachment"
+              value={grievanceFormData.attachment}
+              onChange={handleGrievanceFormChange}
+            /> */}
+
             <button className="btn btn-primary">Submit</button>
+            <Link href="/status" className="">
+              Track Status Instead? Track status
+            </Link>
           </form>
         </div>
         <GrievanceFormLeft />
@@ -117,37 +249,6 @@ const GrievanceForm = () => {
 };
 
 export default GrievanceForm;
-
-interface InputFieldType1PropsType {
-  label: string;
-  id: string;
-  HTMLfor: string;
-  type: string;
-  required: boolean;
-}
-
-const InputFieldType1 = ({
-  InputFieldType1Props,
-}: {
-  InputFieldType1Props: InputFieldType1PropsType;
-}) => {
-  return (
-    <div className="flex flex-col gap-0.5 flex-1">
-      <label
-        className="text-lg font-semibold w-fit"
-        htmlFor={InputFieldType1Props.HTMLfor}
-      >
-        {InputFieldType1Props.label}
-      </label>
-      <input
-        type={InputFieldType1Props.type}
-        id={InputFieldType1Props.id}
-        className="border-2 border-gray-300 rounded-md p-2"
-        required={InputFieldType1Props.required}
-      />
-    </div>
-  );
-};
 
 const GrievanceFormLeft = () => {
   return (

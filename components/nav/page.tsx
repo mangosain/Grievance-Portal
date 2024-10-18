@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 const Nav = () => {
@@ -34,6 +36,9 @@ const Nav = () => {
             </li>
             <li className="border-b py-1">
               <Link href="./grievanceForm">Register a grievance</Link>
+            </li>
+            <li className="border-b py-1">
+              <Link href="./status">Track status</Link>
             </li>
             <li className="border-b py-1">
               <Link href="./faq">F.A.Qs</Link>
@@ -94,7 +99,16 @@ const Nav = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow-xl"
           >
             <li className="border-b py-1">
-              <a>Student Login</a>
+              <a
+                onClick={() => {
+                  const modal = document.getElementById("userLoginModal");
+                  if (modal) {
+                    (modal as HTMLDialogElement).showModal();
+                  }
+                }}
+              >
+                Student Login
+              </a>
             </li>
             <li className="py-1">
               <a>Admin Login</a>
