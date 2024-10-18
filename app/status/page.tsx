@@ -89,7 +89,7 @@ const TrackStatus = () => {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col justify-center items-center p-3">
+    <div className="min-h-screen w-full flex flex-col justify-center items-center p-5">
       <div className="bg-white shadow-xl p-5 rounded-xl border-2 text-center">
         <form onSubmit={handleSearch}>
           <label className="text-lg font-semibold mb-2" htmlFor="ticketNumber">
@@ -115,7 +115,7 @@ const TrackStatus = () => {
       {/* Display Ticket Data or Error Message */}
       {errorMessage && <p className="text-red-500 mt-4">{errorMessage}</p>}
       {ticketData && (
-        <div className="bg-white shadow-xl p-5 rounded-xl border-2 text-center mt-4 text-ceter">
+        <div className="bg-white shadow-xl p-5 rounded-xl border-2 text-center mt-4 lg:mx-96">
           <h2 className="text-2xl font-bold mb-2">Ticket Data</h2>
           <div className="flex gap-4">
             <h1 className="text-left font-semibold">Name:</h1>
