@@ -50,7 +50,7 @@ const Nav = () => {
         </Link>
       </div>
       <div className="navbar-end gap-4">
-        <label className="swap swap-rotate">
+        <label className="swap swap-rotate fill-current">
           {/* this hidden checkbox controls the state */}
           <input
             type="checkbox"
@@ -60,7 +60,7 @@ const Nav = () => {
 
           {/* sun icon */}
           <svg
-            className="swap-off h-7 w-7 fill-current"
+            className="swap-off h-7 w-7"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
           >
@@ -69,7 +69,7 @@ const Nav = () => {
 
           {/* moon icon */}
           <svg
-            className="swap-on h-7 w-7 fill-current"
+            className="swap-on h-7 w-7"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
           >

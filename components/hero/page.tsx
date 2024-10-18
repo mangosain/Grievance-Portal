@@ -48,7 +48,7 @@ const UpperHero = () => {
 
 const LowerHero = () => {
   return (
-    <div className="h-2/5 px-3 lg:flex gap-4 text-white">
+    <div className="h-2/5 px-3 md:flex gap-4 text-white">
       <HeroTile
         HeroTileChildren={{
           title: "Track Status",
@@ -148,9 +148,13 @@ const HeroTile = ({
         backgroundSize: "cover",
       }}
     >
-      <h1 className="text-5xl font-bold">{HeroTileChildren.title}</h1>
-      <p className="text-lg font-semibold">{HeroTileChildren.description}</p>
-      <span className="h-24 w-24 bg-black absolute right-0 bottom-0 rounded-tl-xl rounded-br-xl text-6xl flex justify-center items-center">
+      <h1 className="text-4xl md:text-5xl font-bold">
+        {HeroTileChildren.title}
+      </h1>
+      <p className="text-lg font-semibold mb-10 md:m-0">
+        {HeroTileChildren.description}
+      </p>
+      <span className="h-20 w-20 md:h-24 md:w-24 bg-black absolute right-0 bottom-0 rounded-tl-xl rounded-br-xl text-5xl md:text-6xl flex justify-center items-center">
         <BsArrowRight className="group-hover:-rotate-45 ease-in-out duration-200" />
       </span>
     </motion.div>
