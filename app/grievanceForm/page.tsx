@@ -237,9 +237,12 @@ const GrievanceForm = () => {
             /> */}
 
             <button className="btn btn-primary">Submit</button>
-            <Link href="/status" className="">
-              Track Status Instead? Track status
-            </Link>
+            <p>
+              Track Status Instead?{" "}
+              <Link href="/status" className="text-info">
+                Track status
+              </Link>
+            </p>
           </form>
         </div>
         <GrievanceFormLeft />

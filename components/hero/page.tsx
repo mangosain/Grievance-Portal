@@ -164,12 +164,12 @@ const HeroTile = ({
       <p className="text-md md:text-lg font-semibold mb-10 md:m-0">
         {HeroTileChildren.description}
       </p>
-      <Link
+      <a
         href={HeroTileChildren.to}
         className="h-20 w-20 md:h-24 md:w-24 bg-success-content absolute right-0 bottom-0 rounded-tl-xl rounded-br-xl text-5xl md:text-6xl flex justify-center items-center"
       >
         <BsArrowRight className="group-hover:-rotate-45 ease-in-out duration-200" />
-      </Link>
+      </a>
     </motion.div>
   );
 };
