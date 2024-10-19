@@ -43,8 +43,11 @@ const Nav = () => {
             <li className="border-b py-1">
               <Link href="./faq">F.A.Qs</Link>
             </li>
+            <li className="py-1 border-b ">
+              <Link href="./about">About</Link>
+            </li>
             <li className="py-1">
-              <a>About</a>
+              <p>v1.0.1</p>
             </li>
           </ul>
         </div>
