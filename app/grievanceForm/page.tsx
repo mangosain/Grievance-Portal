@@ -48,6 +48,8 @@ const GrievanceForm = () => {
       alert(
         "Grievance Submitted successfully! Your ticket number is: " + docRef.id
       );
+
+      setGrievanceFormData(grivanceFormData);
     } catch (error) {
       alert("Error adding document: " + error);
     }
