@@ -111,7 +111,16 @@ const Nav = () => {
               </a>
             </li>
             <li className="py-1">
-              <a>Admin Login</a>
+              <a
+                onClick={() => {
+                  const modal = document.getElementById("adminLoginModal");
+                  if (modal) {
+                    (modal as HTMLDialogElement).showModal();
+                  }
+                }}
+              >
+                Admin Login
+              </a>
             </li>
           </ul>
         </div>
