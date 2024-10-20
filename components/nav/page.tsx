@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import ModalTest from "@/components/modalTest/page";
 
 const Nav = () => {
   return (
@@ -47,7 +48,7 @@ const Nav = () => {
               <Link href="./about">About</Link>
             </li>
             <li className="py-1">
-              <p>v1.0.1</p>
+              <p>v1.0.2</p>
             </li>
           </ul>
         </div>
@@ -128,6 +129,7 @@ const Nav = () => {
           </ul>
         </div>
       </div>
+      <ModalTest />
     </nav>
   );
 };

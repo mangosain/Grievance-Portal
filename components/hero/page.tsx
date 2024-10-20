@@ -5,7 +5,6 @@ import { BsArrowRight } from "react-icons/bs";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import ModalTest from "../modalTest/page";
 
 import aboutImage from "@/public/assets/about-us.svg";
 import faqImage from "@/public/assets/q-and-a-about-loan.svg";
@@ -15,7 +14,6 @@ const Hero = () => {
   return (
     <div className="lg:h-full w-full lg:flex lg:flex-col">
       <UpperHero />
-      <ModalTest />
       <LowerHero />
     </div>
   );
