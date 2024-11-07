@@ -57,7 +57,7 @@ const GrievanceForm = () => {
 
   return (
     <div className="min-h-screen w-full bg-base-200 p-2 md:p-5 content-center">
-      <div className="mt-32 lg:mt-0 h-fit bg-base-100 shadow-md rounded-3xl border p-5 lg:flex gap-10 -translate-y-10">
+      <div className="mt-32 lg:mt-12 h-fit bg-base-100 shadow-md rounded-3xl p-5 lg:flex gap-10 -translate-y-10">
         <div className="lg:w-1/2 self-center space-y-5">
           <h1 className="text-3xl font-semibold text-center mt-10 lg:hidden">
             Submit your Concern!
@@ -79,7 +79,7 @@ const GrievanceForm = () => {
                 <input
                   type="text"
                   placeholder="First Name"
-                  className="border-2 border-gray-300 rounded-md p-2"
+                  className="border border-gray-300 rounded-md p-2"
                   id="firstName"
                   name="firstName"
                   value={grievanceFormData.firstName}
@@ -99,7 +99,7 @@ const GrievanceForm = () => {
                   type="text"
                   placeholder="Last Name"
                   id="lastName"
-                  className="border-2 border-gray-300 rounded-md p-2"
+                  className="border border-gray-300 rounded-md p-2"
                   name="lastName"
                   value={grievanceFormData.lastName}
                   required
@@ -117,7 +117,7 @@ const GrievanceForm = () => {
                   type="number"
                   placeholder="Enroll No. / Emp. ID"
                   id="enroll"
-                  className="border-2 border-gray-300 rounded-md p-2"
+                  className="border border-gray-300 rounded-md p-2"
                   name="enroll"
                   value={grievanceFormData.enroll}
                   required
@@ -133,7 +133,7 @@ const GrievanceForm = () => {
                 {/* dropdown input */}
                 <select
                   id="course"
-                  className="h-full p-2 border-2 border-gray-300 rounded-md"
+                  className="h-full p-2 border border-gray-300 rounded-md"
                   name="course"
                   value={grievanceFormData.course}
                   required
@@ -158,7 +158,7 @@ const GrievanceForm = () => {
               type="email"
               placeholder="Email"
               id="email"
-              className="border-2 border-gray-300 rounded-md p-2"
+              className="border border-gray-300 rounded-md p-2"
               name="email"
               value={grievanceFormData.email}
               onChange={handleGrievanceFormChange}
@@ -194,6 +194,18 @@ const GrievanceForm = () => {
                   />
                   <label htmlFor="teacher">Teacher</label>
                 </div>
+                <div className="flex items-center gap-3">
+                  <input
+                    type="radio"
+                    id="employee"
+                    name="role"
+                    value="Employee"
+                    checked={grievanceFormData.role === "Employee"} // Binding to state
+                    onChange={handleGrievanceFormChange} // Capturing the value
+                    required
+                  />
+                  <label htmlFor="employee">Employee</label>
+                </div>
               </div>
             </div>
 
@@ -205,7 +217,7 @@ const GrievanceForm = () => {
               type="subject"
               placeholder="Subject"
               id="subject"
-              className="border-2 border-gray-300 rounded-md p-2"
+              className="border border-gray-300 rounded-md p-2"
               name="subject"
               value={grievanceFormData.subject}
               onChange={handleGrievanceFormChange}
@@ -219,7 +231,7 @@ const GrievanceForm = () => {
             <textarea
               id="grievance"
               placeholder="Write about your grievance here"
-              className="border-2 border-gray-300 rounded-md p-2 h-44"
+              className="border border-gray-300 rounded-md p-2 h-44"
               name="grievance"
               value={grievanceFormData.grievance}
               onChange={handleGrievanceFormChange}

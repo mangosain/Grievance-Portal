@@ -61,11 +61,7 @@ const Nav = () => {
       <div className="navbar-end gap-4">
         <label className="swap swap-rotate fill-current">
           {/* this hidden checkbox controls the state */}
-          <input
-            type="checkbox"
-            className="theme-controller"
-            value="synthwave"
-          />
+          <input type="checkbox" className="theme-controller" value="night" />
 
           {/* sun icon */}
           <svg
