@@ -6,7 +6,6 @@ import { db } from "@/firebase.config";
 import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 
 import grivanceImage from "@/public/assets/grievanceImage.jpeg";
-import { stat } from "fs";
 import Link from "next/link";
 
 const grivanceFormData = {

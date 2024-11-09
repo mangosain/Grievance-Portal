@@ -5,7 +5,7 @@ import ModalTest from "@/components/modalTest/page";
 
 const Nav = () => {
   return (
-    <nav className="navbar fixed top-0 bg-white bg-opacity-20 backdrop-blur-md z-10 shadow-md md:shadow-none">
+    <nav className="navbar fixed top-0 bg-base-300 bg-opacity-20 backdrop-blur-md z-10 shadow-md md:shadow-none">
       <div className="navbar-start">
         <div className="dropdown">
           <div
@@ -47,13 +47,25 @@ const Nav = () => {
             <li className="py-1 border-b ">
               <Link href="./about">About</Link>
             </li>
+            <li className="py-1 border-b">
+              <a
+                onClick={() => {
+                  const modal = document.getElementById("adminLoginModal");
+                  if (modal) {
+                    (modal as HTMLDialogElement).showModal();
+                  }
+                }}
+              >
+                Admin Login
+              </a>
+            </li>
             <li className="py-1">
               <p>v1.0.2</p>
             </li>
           </ul>
         </div>
       </div>
-      <div className="navbar-center hidden md:inline">
+      <div className="navbar-center">
         <Link href="/" className="btn btn-ghost text-xl text-info">
           Grievance Portal
         </Link>
@@ -81,49 +93,6 @@ const Nav = () => {
             <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
           </svg>
         </label>
-        <div className="dropdown dropdown-end">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle avatar"
-          >
-            <div className="w-10 rounded-full border-2 border-info hover:border-none">
-              <img
-                alt="Profile Picture"
-                src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
-              />
-            </div>
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow-xl"
-          >
-            <li className="border-b py-1">
-              <a
-                onClick={() => {
-                  const modal = document.getElementById("userLoginModal");
-                  if (modal) {
-                    (modal as HTMLDialogElement).showModal();
-                  }
-                }}
-              >
-                Student Login
-              </a>
-            </li>
-            <li className="py-1">
-              <a
-                onClick={() => {
-                  const modal = document.getElementById("adminLoginModal");
-                  if (modal) {
-                    (modal as HTMLDialogElement).showModal();
-                  }
-                }}
-              >
-                Admin Login
-              </a>
-            </li>
-          </ul>
-        </div>
       </div>
       <ModalTest />
     </nav>
